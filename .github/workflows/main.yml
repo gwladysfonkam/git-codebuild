@@ -1,0 +1,20 @@
+name: AWS CodeBuild
+
+on:
+  push:
+    branches:
+      - main # Replace with your desired branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build with AWS CodeBuild
+      uses: aws-actions/aws-codebuild-run-build@v1
+      with:
+        project-name: -codebuild-project-name
+        buildspecOverride: buildspec.yml # Replace with the path to your buildspec.yml file
